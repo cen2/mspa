@@ -1,0 +1,72 @@
+{
+  "name": "mspa",
+  "version": "1.0.0",
+  "description": "小型单页面应用脚手架",
+  "main": "index.js",
+  "scripts": {
+    "dev": "cross-env NODE_ENV=development webpack-dev-server --inline --progress",
+    "build": "cross-env NODE_ENV=production webpack --color --progress"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cen2/mspa.git"
+  },
+  "author": "ouyangcheng <1878691337@qq.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/cen2/mspa/issues"
+  },
+  "homepage": "https://github.com/cen2/mspa#readme",
+  "dependencies": {
+    "axios": "^0.18.0",
+    "babel-polyfill": "^6.26.0",
+    "better-scroll": "^1.12.5",
+    "js-cookie": "^2.2.0",
+    "moment": "^2.22.2",
+    "normalize.css": "^8.0.0",
+    "qs": "^6.5.2",
+    "vue": "^2.5.16"
+  },
+  "devDependencies": {
+    "autoprefixer": "^9.0.1",
+    "babel-core": "^6.26.3",
+    "babel-eslint": "^8.2.6",
+    "babel-loader": "^7.1.5",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-stage-2": "^6.24.1",
+    "chalk": "^2.4.1",
+    "clean-webpack-plugin": "^0.1.19",
+    "cross-env": "^5.2.0",
+    "css-loader": "^1.0.0",
+    "eslint": "^4.0.0",
+    "eslint-loader": "^2.1.0",
+    "eslint-plugin-vue": "^4.7.0",
+    "extract-text-webpack-plugin": "^4.0.0-beta.0",
+    "file-loader": "^1.1.11",
+    "html-loader": "^0.5.5",
+    "html-webpack-plugin": "^3.2.0",
+    "ip": "^1.1.5",
+    "less": "^3.8.0",
+    "less-loader": "^4.1.0",
+    "portfinder": "^1.0.13",
+    "postcss-loader": "^2.1.6",
+    "postcss-px-to-viewport": "^0.0.3",
+    "postcss-pxtorem": "^4.0.1",
+    "style-loader": "^0.21.0",
+    "url-loader": "^1.0.1",
+    "vue-loader": "^15.2.6",
+    "vue-template-compiler": "^2.5.16",
+    "webpack": "^4.16.2",
+    "webpack-cli": "^3.1.0",
+    "webpack-dev-server": "^3.1.5"
+  },
+  "engines": {
+    "node": ">= 6.0.0",
+    "npm": ">= 3.0.0"
+  },
+  "browserslist": [
+    "> 1%",
+    "last 6 versions",
+    "not ie <= 8"
+  ]
+}
