@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <script src="http://pv.sohu.com/cityjson?ie=utf-8"></script>
+    <script src="js/fingerprintjs2.js"></script>
+    <script src="js/ip.js"></script>
+    <script src="js/base64.js"></script>
+    <script src="js/userAgent.js"></script>
+</head>
+<body>
+<script>
+
+    function getFP() {
+        new Fingerprint2().get(function (result, components) {
+            var fpc = {}
+            for (var i = 0; i < components.length; i++) {
+                fpc[components[i].key] = components[i].value
+            }
+            fp.color_depth = fpc.color_depth//屏幕颜色深度
+            fp.hardware_concurrency = fpc.hardware_concurrency//是否支持硬件并发性
+            fp.resolution = fpc.resolution//屏幕分辨率
+            fp.available_resolution = fpc.available_resolution//可用的屏幕分辨率
+            fp.timezone_offset = fpc.timezone_offset//格林威治时间和本地时间之间的时差，以分钟为单位
+            fp.cpu_class = fpc.cpu_class//cpu类型
+            fp.navigator_platform = fpc.navigator_platform//操作系统平台
+            fp.webgl_vendor = fpc.webgl_vendor//webgl的提供商和显卡情况
+            fp.has_lied_resolution = fpc.has_lied_resolution//分辨率的比较 screen.width < screen.availWidth screen.height < screen.availHeight
+            fp.touch_support = fpc.touch_support//是否支持触控
+            fp.js_fonts = fpc.js_fonts//检测字体的支持情况
+
+            console.group('fp', result)
+            console.log(fp)
+            console.log(new Base64().encode(JSON.stringify(fp)))
+            console.groupEnd()
+
+            var objStr = JSON.stringify(fp, null, 4);
+            var html = objStr.replace(/\n/g, '<br>').replace(/\s/g, '&nbsp');
+            document.write('fp' + '：' + html);
+        })
+    }
+
+
+    var fp = {}
+    fp.appkey = ''
+    fp.public_ip = returnCitySN.cip//外网IP
+
+    var broswerInfo = broswerInfo()
+    if (broswerInfo.chrome || broswerInfo.firefox) {
+        getIPs(function (ip) {
+            fp.local_ip = ip//内网IP
+            getFP()
+        })
+    } else {
+        // TODO think support local_ip?
+        fp.local_ip = ''
+        getFP()
+    }
+
+</script>
+</body>
+</html>
